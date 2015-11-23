@@ -1,4 +1,4 @@
-package com.vigenere.breaker;
+package com.vigenere.breaker.service;
 
 public class KeyEnumerator {
 	
@@ -15,7 +15,6 @@ public class KeyEnumerator {
 		return key;
 	}
 	
-	
 	public void crackCypher(String cypherText, int maxKeyLength){
 		char[] key = null;
 		
@@ -26,7 +25,7 @@ public class KeyEnumerator {
 			
 			do{
 				counter++;
-				//System.out.println(new String(key));
+				System.out.println(new String(key));
 				
 			}while ((key = getNextKey(key)) != null);
 		}
@@ -34,6 +33,6 @@ public class KeyEnumerator {
 	}
 	
 	public static void main(String[] args) {
-		new KeyEnumerator().crackCypher("TVHUGTUDHKOURUGTS", 6);;
+		new KeyEnumerator().crackCypher("TVHUGTUDHKOURUGTS", 6);
 	}
 }

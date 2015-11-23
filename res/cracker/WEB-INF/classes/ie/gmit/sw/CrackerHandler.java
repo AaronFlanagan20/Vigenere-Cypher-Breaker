@@ -17,11 +17,9 @@ public class CrackerHandler extends HttpServlet {
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
 
-		
 		int maxKeyLength = Integer.parseInt(req.getParameter("frmMaxKeyLength"));
 		String cypherText = req.getParameter("frmCypherText");
 		String taskNumber = req.getParameter("frmStatus");
-
 
 		out.print("<html><head><title>Distributed Systems Assignment</title>");		
 		out.print("</head>");		
@@ -35,18 +33,14 @@ public class CrackerHandler extends HttpServlet {
 			//Check out-queue for finished job
 		}
 		
-		
-		
 		out.print("<H1>Processing request for Job#: " + taskNumber + "</H1>");
 		out.print("<div id=\"r\"></div>");
-		
 		
 		out.print("RMI Server is located at " + remoteHost);
 		out.print("<P>Maximum Key Length: " + maxKeyLength);		
 		out.print("<P>CypherText: " + cypherText);
 		out.print("<P>This servlet should only be responsible for handling client request and returning responses. Everything else should be handled by different objects.");
 		out.print("<P>Note that any variables declared inside this doGet() method are thread safe. Anything defined at a class level is shared between HTTP requests.");				
-
 
 		out.print("<P> Next Steps:");	
 		out.print("<OL>");
@@ -86,8 +80,6 @@ public class CrackerHandler extends HttpServlet {
 		 */
 		
 		//You can use this method to implement the functionality of an RMI client
-		
-		//
 		
 	}
 
