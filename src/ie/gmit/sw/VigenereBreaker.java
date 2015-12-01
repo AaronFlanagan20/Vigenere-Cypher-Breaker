@@ -1,4 +1,4 @@
-package com.vigenere.breaker.service;
+package ie.gmit.sw;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

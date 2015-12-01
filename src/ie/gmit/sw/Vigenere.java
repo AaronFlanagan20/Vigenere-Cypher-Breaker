@@ -1,4 +1,4 @@
-package com.vigenere.breaker.service;
+package ie.gmit.sw;
 
 public class Vigenere { //Blaise de Vigenere is (incorrectly) accredited with inventing this encryption mechanism
 	private char[] key; //Store the cypher key as a char array for convenience
