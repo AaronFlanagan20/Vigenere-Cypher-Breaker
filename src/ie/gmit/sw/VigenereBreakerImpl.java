@@ -6,7 +6,7 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class VigenereBreakerImpl extends UnicastRemoteObject implements VigenereBreaker{
 
-	private static final long serialVersionUID = 1453424354656L;
+	private static final long serialVersionUID = 1L;
 	private KeyEnumerator breaker;
 
 	public VigenereBreakerImpl() throws Exception {
@@ -27,6 +27,5 @@ public class VigenereBreakerImpl extends UnicastRemoteObject implements Vigenere
 		Naming.bind("//localhost/VB", vigenereBreaker);
       
 		System.out.println("Started...");
-		new VigenereBreakerImpl();
 	}
 }

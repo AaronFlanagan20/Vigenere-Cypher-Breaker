@@ -2,9 +2,9 @@ package ie.gmit.sw;
 
 public class Vigenere { //Blaise de Vigenere is (incorrectly) accredited with inventing this encryption mechanism
 	private char[] key; //Store the cypher key as a char array for convenience
-	
+
 	//The tabula recta represents a 26x26 array of characters. For a message of length n, there are 26^n combinations.
-	private char[][] tabulaRecta = { 
+	private char[][] tabulaRecta = {
 		{'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'},
 		{'B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','A'},
 		{'C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B'},
@@ -32,32 +32,31 @@ public class Vigenere { //Blaise de Vigenere is (incorrectly) accredited with in
 		{'Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X'},
 		{'Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y'}
 	};
-	
-	
+
+
 	//Null constructor
 	public Vigenere(){
-		
+
 	}
-	
+
 	//The class constructor takes a String key as a parameter
 	public Vigenere(String key){
 		setKey(key); //Pass the parameter to the setKey method below
 	}
-	
-	
+
 	/* Strip leading/trailing whitespace from the String, convert it to upper-case and
-	 * then convert it into an array and assign it to the instance variable key  
+	 * then convert it into an array and assign it to the instance variable key
 	 */
 	public void setKey(String s){
-		this.key = s.trim().toUpperCase().toCharArray();  
+		this.key = s.trim().toUpperCase().toCharArray();
 	}
 
 	public void setKey(char[] key){
-		this.key = key;  
+		this.key = key;
 	}
-	
+
 	/* Return the character given by the intersection of the row of the keyword character and the column of the
-	 * plain-text character. If no such intersection exists, return the (unencrypted) plain-text character. 
+	 * plain-text character. If no such intersection exists, return the (unencrypted) plain-text character.
 	 */
 	private char getEncryptedCharacter(char key, char plain){
 		for (int rows = 0; rows < tabulaRecta.length; rows++){
@@ -71,9 +70,9 @@ public class Vigenere { //Blaise de Vigenere is (incorrectly) accredited with in
 		}
 		return plain;
 	}
-	
+
 	/* Return the character in the first column of the row containing the cypher character that intersects with the
-	 * column containing the keyword character. 
+	 * column containing the keyword character.
 	 */
 	private char getDecryptedCharacter(char key, char cypher){
 		for (int cols = 0; cols < tabulaRecta[0].length; cols++){
@@ -88,20 +87,21 @@ public class Vigenere { //Blaise de Vigenere is (incorrectly) accredited with in
 		return cypher;
 	}
 
-	
+
 	/* The duplication in the encrypt() and decrypt() methods invites us to optimise and
 	 * simplify the class, by combining their functionality in a new method called doCypher()
 	 */
 	public String doCypher(char[] text, boolean encrypt) {
 		StringBuffer buffer = new StringBuffer();
 		for (int i = 0; i < text.length; i++) {
-			if (text[i] < 'A' || text[i] > 'Z') continue;
+			if (text[i] < 'A' || text[i] > 'Z') break;
 			
 			int j = 0;
 			if (i < key.length) j = i;
-			
+
 			if(encrypt){
 				buffer.append(getEncryptedCharacter(key[j], text[i]));
+				//System.out.println(get)
 			}else{
 				buffer.append(getDecryptedCharacter(key[j], text[i]));
 			}
@@ -109,19 +109,18 @@ public class Vigenere { //Blaise de Vigenere is (incorrectly) accredited with in
 		}
 		return buffer.toString();
 	}
-	
+
 	public String doCypher(String s, boolean encrypt) {
 		char[] text = s.trim().toUpperCase().toCharArray();
 		return doCypher(text, encrypt);
 	}
-	
-	public static void main(String[] args) {
+
+	/*public static void main(String[] args) {
 		Vigenere v = new Vigenere("JAVAP");
 		String cypherTxt = v.doCypher("ANTIDISESTABLISHMENTARIANISM", true);
 		System.out.println(cypherTxt);
-		
+
 		String plainTxt = v.doCypher(cypherTxt, false);
 		System.out.println(plainTxt);
-		
-	}
+	}*/
 }

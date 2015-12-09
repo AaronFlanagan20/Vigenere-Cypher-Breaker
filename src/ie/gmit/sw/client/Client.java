@@ -10,11 +10,15 @@ public class Client {
 		/*
 		 * Looks for remote object
 		 */
-		System.out.println("Looking for rmemote object../");
 		VigenereBreaker breaker = (VigenereBreaker)Naming.lookup("//localhost/VB");
-		System.out.println("found");
 		
-		String result = breaker.decrypt("assd", 6);
+		System.out.println("Checking job queue...");
+		MessageRequest message = new MessageRequest(5, "JNOISRBNBCJKURBQVNWCJARJWRBV", 1);//key should be javap
+		InQueue.addLast(message);
+		MessageRequest messageRequest = InQueue.getFirst();
+		System.out.println("This is jobNumber: " + messageRequest.getJobNumber());
+		
+		String result = breaker.decrypt(messageRequest.getCypherText(), messageRequest.getMaxKeyLength());//definitely pasing values
 		System.out.println(result);
 	}
 	
