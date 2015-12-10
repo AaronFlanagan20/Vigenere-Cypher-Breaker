@@ -23,5 +23,4 @@ public class MessageRequest {
 	public long getJobNumber() {
 		return jobNumber;
 	}
-	
 }

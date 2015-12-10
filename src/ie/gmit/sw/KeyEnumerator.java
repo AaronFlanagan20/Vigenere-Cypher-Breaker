@@ -30,7 +30,8 @@ public class KeyEnumerator {
 		int counter = 0;
 		for (int j = 4; j <= maxKeyLength; j++){
 			key = new char[j];
-
+			
+			j = 0;
 			for (int k = 0; k < key.length; k++) key[k] = 'A';
 
 			do{
@@ -50,6 +51,5 @@ public class KeyEnumerator {
 		
 		String result = new Vigenere(bestKey).doCypher(cypherText, false);
 		return result;
-
 	}
 }

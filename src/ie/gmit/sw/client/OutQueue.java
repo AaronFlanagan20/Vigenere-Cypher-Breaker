@@ -14,5 +14,5 @@ public class OutQueue {
 	public void remove(int jobNumber, Object object){
 		outQueue.remove(jobNumber, object);
 	}
-
+	
 }
