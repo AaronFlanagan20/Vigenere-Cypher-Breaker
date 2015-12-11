@@ -31,7 +31,6 @@ public class KeyEnumerator {
 		for (int j = 4; j <= maxKeyLength; j++){
 			key = new char[j];
 			
-			j = 0;
 			for (int k = 0; k < key.length; k++) key[k] = 'A';
 
 			do{

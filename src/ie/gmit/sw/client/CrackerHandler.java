@@ -1,4 +1,4 @@
-package ie.gmit.sw;
+package ie.gmit.sw.client;
 
 import java.io.*;
 import javax.servlet.*;

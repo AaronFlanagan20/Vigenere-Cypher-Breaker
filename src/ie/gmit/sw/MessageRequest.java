@@ -1,4 +1,4 @@
-package ie.gmit.sw.client;
+package ie.gmit.sw;
 
 public class MessageRequest {
 

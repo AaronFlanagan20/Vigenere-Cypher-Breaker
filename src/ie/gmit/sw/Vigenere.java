@@ -93,15 +93,14 @@ public class Vigenere { //Blaise de Vigenere is (incorrectly) accredited with in
 	 */
 	public String doCypher(char[] text, boolean encrypt) {
 		StringBuffer buffer = new StringBuffer();
+		int j = 0;
 		for (int i = 0; i < text.length; i++) {
-			if (text[i] < 'A' || text[i] > 'Z') break;
+			if (text[i] < 'A' || text[i] > 'Z') continue;
 			
-			int j = 0;
-			if (i < key.length) j = i;
+			if (j >= key.length) j = 0;
 
 			if(encrypt){
 				buffer.append(getEncryptedCharacter(key[j], text[i]));
-				//System.out.println(get)
 			}else{
 				buffer.append(getDecryptedCharacter(key[j], text[i]));
 			}
@@ -115,12 +114,12 @@ public class Vigenere { //Blaise de Vigenere is (incorrectly) accredited with in
 		return doCypher(text, encrypt);
 	}
 
-	/*public static void main(String[] args) {
-		Vigenere v = new Vigenere("JAVAP");
-		String cypherTxt = v.doCypher("ANTIDISESTABLISHMENTARIANISM", true);
-		System.out.println(cypherTxt);
-
-		String plainTxt = v.doCypher(cypherTxt, false);
-		System.out.println(plainTxt);
-	}*/
+//	public static void main(String[] args) {
+//		Vigenere v = new Vigenere("javap");
+//		String cypherTxt = v.doCypher("ANTIDISESTABLISHMENTARIANISM", true);
+//		System.out.println(cypherTxt);
+//
+//		String plainTxt = v.doCypher(cypherTxt, false);
+//		System.out.println(plainTxt);
+//	}
 }

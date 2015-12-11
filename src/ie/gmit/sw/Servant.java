@@ -1,21 +1,25 @@
 package ie.gmit.sw;
 
-import ie.gmit.sw.client.InQueue;
-import ie.gmit.sw.client.MessageRequest;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 
 public class Servant {
 	
-	public static void main(String[] args) throws InterruptedException {
-					
-		MessageRequest object = new MessageRequest(3, "hello", 1);
-		
-		InQueue queue = InQueue.getInstance();
+	public static void main(String[] args) {
+							
+		try {
+			VigenereBreaker breaker = (VigenereBreaker) Naming.lookup("//localhost/VB");
+			
+			MessageRequest messageRequest = new MessageRequest(5, "EDPIDMIASTERHISLCANTEHEANMII", 1);
+			
+			String result = breaker.decrypt(messageRequest.getCypherText(), messageRequest.getMaxKeyLength());
+			System.out.println(result);
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			e.printStackTrace();
+		}
 
-		queue.addLast(object);
-		queue.getSize();
-		
-		
-		Thread.sleep(100000);
-	
+			
 	}
 }
