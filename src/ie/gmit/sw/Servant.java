@@ -8,13 +8,14 @@ import java.rmi.RemoteException;
 public class Servant {
 	
 	public static void main(String[] args) {
-							
+		
+		/*
+		 * Servant looks for the remote object and once found it invokes its decrypt method and return the result
+		 */
 		try {
-			VigenereBreaker breaker = (VigenereBreaker) Naming.lookup("//localhost/VB");
-			
-			MessageRequest messageRequest = new MessageRequest(5, "EDPIDMIASTERHISLCANTEHEANMII", 1);
-			
-			String result = breaker.decrypt(messageRequest.getCypherText(), messageRequest.getMaxKeyLength());
+			VigenereBreaker breaker = (VigenereBreaker) Naming.lookup(VigenereBreaker.lookUpName);
+						
+			String result = breaker.decrypt("JNOISRSZSIJBGIHQMZNIJRDACRSH", 5);
 			System.out.println(result);
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			e.printStackTrace();

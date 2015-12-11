@@ -23,6 +23,7 @@ public class Worker{
 			String result = breaker.decrypt(messageRequest.getCypherText(), messageRequest.getMaxKeyLength());
 			System.out.println(result);
 			out.add(messageRequest.getJobNumber(), result);
+			in.remove(messageRequest);
 		}
 	}
 }

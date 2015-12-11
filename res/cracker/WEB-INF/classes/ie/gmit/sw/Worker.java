@@ -21,7 +21,6 @@ public class Worker{
 			MessageRequest messageRequest = in.poll();
 			
 			String result = breaker.decrypt(messageRequest.getCypherText(), messageRequest.getMaxKeyLength());
-			System.out.println(result);
 			out.add(messageRequest.getJobNumber(), result);
 		}
 	}

@@ -40,9 +40,8 @@ public class CrackerHandler extends HttpServlet {
 			taskNumber = new String("T" + jobNumber);
 			jobNumber++;
 			MessageRequest message = new MessageRequest(maxKeyLength, cypherText, maxKeyLength);
-			in.offer(message);
+			in.add(message);
 		}else{
-			//out.println();
 			outQ.remove(jobNumber);
 		}
 		
@@ -78,8 +77,6 @@ public class CrackerHandler extends HttpServlet {
 		 *-----------------------------------------------------------------------
 		 * 7) Return the cyphertext to the client next time a request for the jobNumber is received and delete the key / value pair from the Map.
 		 */
-
-		//You can use this method to implement the functionality of an RMI client
 
 	}
 

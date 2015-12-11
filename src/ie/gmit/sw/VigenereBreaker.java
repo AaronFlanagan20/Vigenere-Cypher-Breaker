@@ -10,4 +10,6 @@ public interface VigenereBreaker extends Remote {
 	 */
 	public String decrypt(String cypherText, int maxKeyLength) throws RemoteException;
 	
+	public final static String lookUpName = "Vigenere";
+	
 }
