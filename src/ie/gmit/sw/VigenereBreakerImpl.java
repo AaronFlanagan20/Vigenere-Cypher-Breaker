@@ -46,7 +46,6 @@ public class VigenereBreakerImpl extends UnicastRemoteObject implements Vigenere
 			public void run() {
 				try {
 					LocateRegistry.createRegistry(1099);
-					//System.setProperty("java.security.policy","file:.res/rmi.policy");
 			        System.out.println("java RMI registry created.");
 			            
 			        VigenereBreaker vigenereBreaker = new VigenereBreakerImpl();

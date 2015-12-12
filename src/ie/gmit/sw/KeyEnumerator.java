@@ -48,7 +48,7 @@ public class KeyEnumerator {
 		char[] key = null;
 		
 		int counter = 0;
-		for (int j = 4; j <= maxKeyLength; j++){
+		for (int j = 3; j <= maxKeyLength; j++){
 			key = new char[j];
 			
 			for (int k = 0; k < key.length; k++) key[k] = 'A';
@@ -61,7 +61,7 @@ public class KeyEnumerator {
 				if(score > bestScore){
 					bestScore = score;//new bestscore means
 					bestKey = new String(key);//we have a new better key
-					System.out.println("Got best key " + bestKey);
+					//System.out.println("Got best key " + bestKey);
 				}
 				
 			}while ((key = getNextKey(key)) != null);
