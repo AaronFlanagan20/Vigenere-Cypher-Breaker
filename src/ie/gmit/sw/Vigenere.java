@@ -1,9 +1,18 @@
 package ie.gmit.sw;
 
+/*
+ * Vigenere either encrypts or decrypts using a given key. 
+ * Encrypt if true, Decrypt if false
+ * 
+ * @Authour Aaron Flanagan
+ */
+
 public class Vigenere { //Blaise de Vigenere is (incorrectly) accredited with inventing this encryption mechanism
 	private char[] key; //Store the cypher key as a char array for convenience
 
-	//The tabula recta represents a 26x26 array of characters. For a message of length n, there are 26^n combinations.
+	/*
+	 * The tabula recta represents a 26x26 array of characters. For a message of length n, there are 26^n combinations.
+	 */
 	private char[][] tabulaRecta = {
 		{'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'},
 		{'B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','A'},

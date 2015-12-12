@@ -17,7 +17,8 @@ public class InQueue{
 					inQueue.put(messageRequest);
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
-				}				
+				}	
+				add.stop();
 			}
 		});
 		
@@ -39,7 +40,9 @@ public class InQueue{
 	public void remove(final Object object) {
 		remove = new Thread(new Runnable() {
 			public void run() {
-				inQueue.remove(object);				
+				inQueue.remove(object);	
+				
+				remove.stop();
 			}
 		});
 		

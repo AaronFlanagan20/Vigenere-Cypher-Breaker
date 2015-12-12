@@ -3,19 +3,30 @@ package ie.gmit.sw;
 public class KeyEnumerator {
 	
 	/*
-	 * KeyEnumerators job is to create a QuadgramMap when invoked
-	 * then calculate the best key it can
-	 * and finally decrypt text with the key
+	 * KeyEnumerator creates a Quadgram map and calculates the best key it can.
+	 * It then invokes Vigeneres doCypher method and passes the best key.  
+	 * 
+	 * @see QuadgramMap
+	 * @see Vigenere
+	 * 
+	 * @author Aaron Flanagan
 	 */
 	
 	private QuadgramMap map = null;
 	private float bestScore=0.0f;
 	private String bestKey;
 	
+	/*
+	 * KeyEnumerator creates a QuadgramMap object when instantiated
+	 * @see QuadgramMap 
+	 */
 	public KeyEnumerator() throws Exception {
 		map = new QuadgramMap("res/WarAndPeace-Tolstoy.txt");//parse in the quadgrams from text and add to map
 	}
 	
+	/*
+	 * Loops through a set of keys. If not finished reset to A, else increment the key
+	 */
 	private char[] getNextKey(char[] key){
 		for (int i = key.length - 1; i >=0; i--){
 			if (key[i] =='Z'){
@@ -25,10 +36,15 @@ public class KeyEnumerator {
 				key[i]++;
 				break;
 			}
+			System.out.println(key[i]);
 		}
 		return key;
 	}
 	
+	/*
+	 * crackCypher takes in the clients request parameters, generates the bestkey it can and then invokes Vigenere doCypher method
+	 * @see Vigenere.doCypher
+	 */
 	public String crackCypher(String cypherText, int maxKeyLength){
 		char[] key = null;
 		
@@ -38,7 +54,7 @@ public class KeyEnumerator {
 			
 			for (int k = 0; k < key.length; k++) key[k] = 'A';
 
-			do{//this culculates the best key
+			do{
 				counter++;//incremented keys
 				String result = new Vigenere(new String(key)).doCypher(cypherText, false);//pass in encrypted text and decrpyt it with key
 				float score = map.getScore(result);//get score of key
