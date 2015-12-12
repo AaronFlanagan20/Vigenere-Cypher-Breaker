@@ -3,7 +3,11 @@ package ie.gmit.sw.client;
 import java.rmi.Naming;
 
 import ie.gmit.sw.VigenereBreaker;
-
+/*
+ * Worker takes in a request on the InQueue, invokes the remote object method, and puts the result in the OutQueue
+ * 
+ * @author Aaron Flanagan
+ */
 public class Worker{
 	
 	private InQueue in;
@@ -14,6 +18,10 @@ public class Worker{
 		this.out = out;
 	}
 	
+	/*
+	 * Looks for the remote object and invokes its decrypt method and returns the result
+	 * It then puts the result in the OutQueue and removes it from the InQueue
+	 */
 	public void lookAndInvoke() throws Exception{
 		VigenereBreaker breaker = (VigenereBreaker) Naming.lookup("//localhost/VB");
 		

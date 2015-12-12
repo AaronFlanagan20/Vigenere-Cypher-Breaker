@@ -36,7 +36,6 @@ public class KeyEnumerator {
 				key[i]++;
 				break;
 			}
-			System.out.println(key[i]);
 		}
 		return key;
 	}

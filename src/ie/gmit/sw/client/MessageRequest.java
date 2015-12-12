@@ -1,5 +1,10 @@
 package ie.gmit.sw.client;
 
+/*
+ * Immutable object that holds the keyLength, encrypted text annd jobNumber.
+ * This object is the request objected put in and out of the queues
+ */
+
 public class MessageRequest {
 
 	private final int maxKeyLength;
