@@ -21,8 +21,8 @@ public class KeyEnumerator {
 	 * @see QuadgramMap
 	 */
 	public KeyEnumerator() throws Exception {
-		//map = new QuadgramMap("res/WarAndPeace-Tolstoy.txt");//parse in the quadgrams from text and add to map
-		map = new QuadgramMap("./WarAndPeace-Tolstoy.txt");
+		//map = new QuadgramMap("src/WarAndPeace-Tolstoy.txt");//eclipse
+		map = new QuadgramMap("./WarAndPeace-Tolstoy.txt");//command line
 	}
 
 	/*
