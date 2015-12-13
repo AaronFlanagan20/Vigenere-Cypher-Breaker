@@ -19,9 +19,11 @@ public class Servant {
 			public void run() {
 				try {
 					VigenereBreaker breaker = (VigenereBreaker) Naming.lookup(VigenereBreaker.lookUpName);
+					
+					System.out.println("Found object remote service at : " + VigenereBreaker.lookUpName);
 								
 					String result = breaker.decrypt("JNOISRSZSIJBGIHQMZNIJRDACRSH", 5);
-					System.out.println(result);
+					System.out.println("Result: " + result);
 				} catch (MalformedURLException | RemoteException | NotBoundException e) {
 					e.printStackTrace();
 				}

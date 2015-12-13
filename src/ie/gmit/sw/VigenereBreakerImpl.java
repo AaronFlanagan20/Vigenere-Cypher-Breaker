@@ -37,6 +37,7 @@ public class VigenereBreakerImpl extends UnicastRemoteObject implements Vigenere
 	 * @see VigenereBreaker.decrypt
 	 */
 	public String decrypt(String cypherText, int maxKeyLength){
+		System.out.println("Received request, decrypting...");
 		return breaker.crackCypher(cypherText, maxKeyLength);
 	}
 	
